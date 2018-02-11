@@ -12,6 +12,7 @@
 
 //We need <vector> inclusion because the wavetable is a vector of float values;
 #include <vector>
+#include <cmath>
 
 /*
 This class represent a wavetable, which, in poor words, is nothing than an array that can be read
@@ -22,6 +23,9 @@ For example, a wavetable representing a sawtooth wave will store values from -1 
 class WaveTable
 {
 public:
+	//We can calculate our PI that we will use in ensureValueZeroTwoPI
+	const float PI = atan(1.0) * 4.0;
+	const float TwoPI = PI * 2.0;
 	/*
 	Constructor
 	*/
@@ -143,6 +147,10 @@ public:
 	*/
 	float scaleValue(float value, float currentMin, float currentMax, float newMin, float newMax) const {
 		return (newMax - newMin) * (value - currentMin) / (currentMax - currentMin) + newMin;
+	}
+
+	float ensureValueZeroTwoPI(float value, float forMin, float forMax) const {
+		return scaleValue(value, forMin, forMax, 0.0, TwoPI);
 	}
 
 private:

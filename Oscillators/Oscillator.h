@@ -15,7 +15,6 @@ class Oscillator
 {
 	public:
 		Oscillator();
-		Oscillator();
 
 		/*
 			This function is used to set the phase to this oscillator

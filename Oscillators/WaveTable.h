@@ -50,7 +50,10 @@ public:
 	/*
 	This method set a value to our content vector at the index
 	*/
-	void setValue(int index, float value) { content.at[index] = value; }
+	void setValue(int index, float value) {
+        //content.at[index] = value;
+        content.at(index) = value;
+    }
 
 	/*
 	This method returns the wavetable vector length

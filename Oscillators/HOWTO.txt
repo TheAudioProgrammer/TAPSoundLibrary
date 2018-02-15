@@ -1,0 +1,45 @@
+//==============================================================================
+    void prepareToPlay (int samplesPerBlockExpected, double sampleRate) override
+    {
+        // This function will be called when the audio device is started, or when
+        // its settings (i.e. sample rate, block size, etc) are changed.
+
+        // You can use this function to initialise any resources you might need,
+        // but be careful - it will be called on the audio thread, not the GUI thread.
+
+        // For more details, see the help for AudioProcessor::prepareToPlay()
+
+		oscillator = Oscillator(440.0);
+		oscillator.setup();
+		wave = WaveTable(1024);
+		for (int i = 0; i < wave.getLength(); i++) {
+			float sinValue = Utils::ensureValueZeroTwoPI(i, 0.0, wave.getLength());
+			float finalValue = sin(sinValue);
+			wave.setValue(i, finalValue);
+		}
+		oscillator.addWavetable(wave);
+		oscillator.setMaxVoices(8);
+		oscillator.setVoices(4);
+		oscillator.setDetune(10.0);
+		oscillator.setDetuneSpread(24.0);
+		oscillator.setVolume(0.1);
+    }
+
+    void getNextAudioBlock (const AudioSourceChannelInfo& bufferToFill) override
+    {
+        // Your audio-processing code goes here!
+
+        // For more details, see the help for AudioProcessor::getNextAudioBlock()
+
+        // Right now we are not producing any data, in which case we need to clear the buffer
+        // (to prevent the output of random noise)
+        bufferToFill.clearActiveBufferRegion();
+
+		float* const leftSpeaker = bufferToFill.buffer->getWritePointer(0, bufferToFill.startSample);
+		float* const rightSpeaker = bufferToFill.buffer->getWritePointer(1, bufferToFill.startSample);
+
+		for (int sample = 0; sample < bufferToFill.numSamples; ++sample)
+		{
+			leftSpeaker[sample] = rightSpeaker[sample] = oscillator.getOutput();
+		}
+    }

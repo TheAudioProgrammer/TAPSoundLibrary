@@ -1,11 +1,9 @@
 /*
-  ==============================================================================
-
-    WaveTable.cpp
-    Created: 11 Feb 2018 11:19:46pm
-    Author:  Claudio
-
-  ==============================================================================
+==============================================================================
+WaveTable.cpp
+Created: 11 Feb 2018 11:19:46pm
+Author:  Claudio
+==============================================================================
 */
 
 #include "WaveTable.h"
@@ -109,7 +107,7 @@ void WaveTable::scaleWavetable(float newMin, float newMax)
 	float currentMax = *std::max_element(content.begin(), content.end());
 	//We loop through the wavetable
 	for (int i = 0; i < getLength(); i++) {
-		content.at(i) = scaleValue(content.at(i), currentMin, currentMax, newMin, newMax);
+		content.at(i) = Utils::scaleValue(content.at(i), currentMin, currentMax, newMin, newMax);
 	}
 }
 
@@ -121,8 +119,7 @@ std::vector<float> WaveTable::readScaleWavetable(float newMin, float newMax)
 	float currentMax = *std::max_element(readWave.begin(), readWave.end());
 	//We loop through the read wavetable
 	for (int i = 0; i < readWave.size(); i++) {
-		readWave.at(i) = scaleValue(readWave.at(i), currentMin, currentMax, newMin, newMax);
+		readWave.at(i) = Utils::scaleValue(readWave.at(i), currentMin, currentMax, newMin, newMax);
 	}
 	return readWave;
 }
-

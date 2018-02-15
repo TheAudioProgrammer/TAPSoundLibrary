@@ -10,14 +10,13 @@
 
 #include "Effect.h"
 
-namespace tsl {
-    
-    namespace audioeffects {
-    
-        Effect::Effect(double sampleRate, int samplesPerBlock)
+namespace tsl
+{
+    namespace audioeffects
+    {
+        Effect::Effect(double sampleRate, int samplesPerBlock) :
+        sampleRate(sampleRate), samplesPerBlock(samplesPerBlock)
         {
-            this->sampleRate = sampleRate;
-            this->samplesPerBlock = samplesPerBlock;
         }
         double Effect::getSampleRate()
         {
@@ -35,6 +34,5 @@ namespace tsl {
         {
             return this->samplesPerBlock;
         }
-        
     }
 }

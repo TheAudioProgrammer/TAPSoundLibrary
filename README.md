@@ -14,3 +14,10 @@ To use the latest stable version of the TAPSoundlibrary you need to perform the 
 
 1) Create a JUCE projcet for debuging or use a existing one 
 2) Follow the steps in the **Getting started** section
+
+## CODING STANDARDS
+
+We will be following the Juce coding standards.  Please read here:
+https://juce.com/learn/coding-standards
+
+

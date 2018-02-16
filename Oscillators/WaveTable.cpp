@@ -40,13 +40,13 @@ void WaveTable::cutAboveRange(float range)
 	if (range >= 0.0) {
 		//We loop through the wavetable
 		for (int i = 0; i < getLength(); i++) {
-			//We get the current value of the wavetable with content.at[i] where "i" is an integer
+			//We get the current value of the wavetable with content[i] where "i" is an integer
 			//If the current value exceeds the range we can set the value to take tha range value
-			if (content.at(i) > range) {
-				content.at(i) = range;
+			if (content[i] > range) {
+				content[i] = range;
 			}
-			if (content.at(i) < (range * -1)) {
-				content.at(i) = range * -1;
+			if (content[i] < (range * -1)) {
+				content[i] = range * -1;
 			}
 		}
 	}
@@ -57,13 +57,13 @@ std::vector<float> WaveTable::readCutAboveRange(float range)
 	std::vector<float> readWave = content;
 	if (range >= 0.0) {
 		for (int i = 0; i < readWave.size(); i++) {
-			//We get the current value of the wavetable with content.at[i] where "i" is an integer
+			//We get the current value of the wavetable with content[i] where "i" is an integer
 			//If the current value exceeds the range we can set the value to take tha range value
-			if (readWave.at(i) > range) {
-				readWave.at(i) = range;
+			if (readWave[i] > range) {
+				readWave[i] = range;
 			}
-			if (readWave.at(i) < (range * -1)) {
-				readWave.at(i) = range * -1;
+			if (readWave[i] < (range * -1)) {
+				readWave[i] = range * -1;
 			}
 		}
 	}
@@ -78,7 +78,7 @@ void WaveTable::invertWavetable(float invert)
 		if (invert != 1.0) {
 			//We loop through the wavetable
 			for (int i = 0; i < getLength(); i++) {
-				content.at(i) = content.at(i) * invert;
+				content[i] = content[i] * invert;
 			}
 		}
 	}
@@ -93,7 +93,7 @@ std::vector<float> WaveTable::readInvertWavetable(float invert)
 		if (invert != 1.0) {
 			//We loop through the wavetable content and we read it
 			for (int i = 0; i < readWave.size(); i++) {
-				readWave.at(i) = readWave.at(i) * invert;
+				readWave[i] = readWave[i] * invert;
 			}
 		}
 	}
@@ -107,7 +107,7 @@ void WaveTable::scaleWavetable(float newMin, float newMax)
 	float currentMax = *std::max_element(content.begin(), content.end());
 	//We loop through the wavetable
 	for (int i = 0; i < getLength(); i++) {
-		content.at(i) = Utils::scaleValue(content.at(i), currentMin, currentMax, newMin, newMax);
+		content[i] = Utils::scaleValue(content[i], currentMin, currentMax, newMin, newMax);
 	}
 }
 
@@ -119,7 +119,7 @@ std::vector<float> WaveTable::readScaleWavetable(float newMin, float newMax)
 	float currentMax = *std::max_element(readWave.begin(), readWave.end());
 	//We loop through the read wavetable
 	for (int i = 0; i < readWave.size(); i++) {
-		readWave.at(i) = Utils::scaleValue(readWave.at(i), currentMin, currentMax, newMin, newMax);
+		readWave[i] = Utils::scaleValue(readWave[i], currentMin, currentMax, newMin, newMax);
 	}
 	return readWave;
 }

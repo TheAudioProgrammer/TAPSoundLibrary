@@ -148,7 +148,7 @@ public:
 				int detuneIndex = (i + 1) - ((int)(this->voices + 0.5) / 2);
 				float voiceFrequency = frequency + pow((detuneIndex * ((detune * detuneSpread * 10) / 1200)), 2.0);
 				float voiceIncrement = voiceFrequency * getSelectedWavetable().getLength() / currentSampleRate;
-				voicesPhaseIncrement.at(i) = voiceIncrement;
+				voicesPhaseIncrement[i] = voiceIncrement;
 			}
 		}
 	}

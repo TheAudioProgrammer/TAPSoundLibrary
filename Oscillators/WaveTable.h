@@ -40,7 +40,7 @@ public:
 	~WaveTable();
 
 	float readAt(int index) const {
-		return content.at(index);
+		return content[index];
 	}
 
 	/*
@@ -51,7 +51,7 @@ public:
 	/*
 	This method set a value to our content vector at the index
 	*/
-	void setValue(int index, float value) { content.at(index) = value; }
+	void setValue(int index, float value) { content[index] = value; }
 
 	/*
 	This method returns the wavetable vector length

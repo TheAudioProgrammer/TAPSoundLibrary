@@ -32,8 +32,8 @@ float Oscillator::getOutput(float frequency)
 	}
 	if (this->volume > 0.0 && this->voices > 1) {
 		for (int i = 0; i < this->voices; i++) {
-			out = out + this->getSelectedWavetable().readAt((int)this->voicesPhaseIncrement.at(i)) * this->volume;
-			this->voicesPhase.at(i) = fmod((this->voicesPhase.at(i) + (int) this->voicesPhaseIncrement.at(i)), this->getSelectedWavetable().getLength());
+			out = out + this->getSelectedWavetable().readAt((int)this->voicesPhaseIncrement[i]) * this->volume;
+			this->voicesPhase[i] = fmod((this->voicesPhase[i] + (int) this->voicesPhaseIncrement[i]), this->getSelectedWavetable().getLength());
 		}
 		out = out / this->voices;
 	}
@@ -50,14 +50,14 @@ float Oscillator::getOutput()
 		if (wavetables.size() > 0) {
 			if (detune > 0.0) {
 				for (int i = 0; i < this->voices; i++) {
-					out = out + this->getSelectedWavetable().readAt((int)this->voicesPhase.at(i));
-					this->voicesPhase.at(i) = fmod((this->voicesPhase.at(i) + (int) this->voicesPhaseIncrement.at(i)), this->getSelectedWavetable().getLength());
+					out = out + this->getSelectedWavetable().readAt((int)this->voicesPhase[i]);
+					this->voicesPhase[i] = fmod((this->voicesPhase[i] + (int) this->voicesPhaseIncrement[i]), this->getSelectedWavetable().getLength());
 				}
 				out = out / this->voices;
 			}
 			else {
-				out = out + this->getSelectedWavetable().readAt((int)this->voicesPhase.at(0));
-				this->voicesPhase.at(0) = fmod((this->voicesPhase.at(0) + (int) this->voicesPhaseIncrement.at(0)), this->getSelectedWavetable().getLength());
+				out = out + this->getSelectedWavetable().readAt((int)this->voicesPhase[0]);
+				this->voicesPhase[0] = fmod((this->voicesPhase[0] + (int) this->voicesPhaseIncrement[0]), this->getSelectedWavetable().getLength());
 			}
 			out = out * this->volume;
 		}

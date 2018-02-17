@@ -61,7 +61,7 @@ namespace tsl {
              * @param left
              * @param right
              */
-            virtual void process(float* left, float* right) = 0;
+            virtual void process (float* left, float* right, int numSamples) = 0;
             /**
              * This is where you process the audio if your effect
              * is mono. You need to implement this method in your
@@ -69,7 +69,7 @@ namespace tsl {
              *
              * @param mono
              */
-            virtual void process(float* mono) = 0;
+            virtual void process (float* mono, int numSamples) = 0;
         protected:
             /**
              * The number of samples your system

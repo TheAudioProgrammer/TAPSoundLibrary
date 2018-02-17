@@ -2,3 +2,4 @@
 #include "Oscillators/Oscillator.h"
 #include "Effects/Effect.h"
 #include "Effects/Gain.h"
+#include "Effects/Filter.h"

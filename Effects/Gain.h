@@ -22,8 +22,8 @@ namespace tsl
         public:
             Gain(double sampleRate, int samplesPerBlock);
             ~Gain();
-            void process(float* left, float* right);
-            void process(float* mono);
+            void process(float* left, float* right, int numSamples);
+            void process(float* mono, int numSamples);
             void setVol(float vol);
             float getVol();
         private:

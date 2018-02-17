@@ -21,7 +21,7 @@ namespace tsl
         Gain::~Gain()
         {
         }
-        void Gain::process(float* left, float* right)
+        void Gain::process(float* left, float* right, int numSamples)
         {
             for(int i=0;i<samplesPerBlock;i++)
             {
@@ -29,7 +29,7 @@ namespace tsl
                 right[i] = right[i] * vol;
             }
         }
-        void Gain::process(float* mono)
+        void Gain::process(float* mono, int numSamples)
         {
         }
         void Gain::setVol(float vol)

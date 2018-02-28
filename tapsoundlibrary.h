@@ -3,3 +3,4 @@
 #include "Effects/Effect.h"
 #include "Effects/Gain.h"
 #include "Effects/BiQuadFilter.h"
+#include "Effects/FIRFilter.h"

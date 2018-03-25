@@ -39,19 +39,19 @@ class Utils
 		return Utils::scaleValue(value, forMin, forMax, 0.0, acos(-1.0) * 2.0);
 	}
 
-	static void debugFloat(String message, float value) {
-		String strValue = String(value);
-		String str = message;
+    static void debugFloat(juce::String message, float value) {
+		juce::String strValue = juce::String(value);
+		juce::String str = message;
 		str += " : ";
 		str += strValue;
-		Logger::outputDebugString(str);
+		juce::Logger::outputDebugString(str);
 	}
 
-	static void debugInt(String message, int value) {
-		String strValue = String(value);
-		String str = message;
+	static void debugInt(juce::String message, int value) {
+		juce::String strValue = juce::String(value);
+		juce::String str = message;
 		str += " : ";
 		str += strValue;
-		Logger::outputDebugString(str);
+		juce::Logger::outputDebugString(str);
 	}
 };
